@@ -22,7 +22,7 @@ for i in range(1, (int(last_page_number)+1)):
     page = urllib2.urlopen(cur_url)
     soup = BeautifulSoup(page)
     
-    linkslist = soup.find(id="ul-search-result")
+    linkslist = soup.find(class_ = "adr")
     urllist = linkslist.find_all("a")
 
     for link in urllist:
