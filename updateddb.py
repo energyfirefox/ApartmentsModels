@@ -100,7 +100,7 @@ notexistcode = [f.code for  f in Flat.select(NOTIN(Flat.q.code, exist_list))]
 ### marked non-exists data in db:
 count = 0
 for nonex in notexistcode:
-	update = Update('Flat', values = {'notexistsdate': updated_date}, where = ('code =' + str(nonex)))
+	update = Update('Flat', values = {'notexistsdate': updated_date}, where = ('notexistsdate is null AND code =' + str(nonex)))
 	query = connection.sqlrepr(update)
 	connection.query(query)
 	print str(nonex)+" object not exists. Updated"
